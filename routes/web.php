@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.app');
+    return view('main');
+});
+
+Route::controller(VoteController::class)->group(function() {
+    Route::get('/create', 'createPoll');
+    Route::get('/enter', 'enterCode');
 });

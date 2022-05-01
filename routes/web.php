@@ -21,4 +21,6 @@ Route::get('/', function () {
 Route::controller(VoteController::class)->group(function() {
     Route::get('/create', 'createPoll');
     Route::get('/enter', 'enterCode');
+    Route::post('/verify', 'verify');
+    Route::post('/set/poll', 'setPoll');
 });

@@ -15,6 +15,7 @@
     <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <title>@yield('title', env('APP_NAME'))</title>
+
   </head>
 <body style="background-color:#F2F0EB;">
 
@@ -28,13 +29,13 @@
     </nav>
 
     <!-- Content -->
-    <main>
+    <main style="min-height:700px;">
         @yield('content')
     </main>
 
 
     <!-- Footer -->
-    <footer class="bg-primary text-secondary fixed-bottom text-center" style="height:45px;">
+    <footer class="bg-primary text-secondary text-center" style="height:45px;bottom:0;">
         <h4>2020</h4>
     </footer>
 </body>

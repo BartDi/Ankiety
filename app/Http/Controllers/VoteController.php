@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Http\Requests\CheckPollRequest;
+use App\Services\PollService;
 
 class VoteController extends Controller
 {
@@ -19,12 +20,23 @@ class VoteController extends Controller
 
     public function verify(Request $request)
     {
-        $random = Str::random(5);
-        return $random;
+
     }
 
-    public function setPoll(Request $request)
+    // Request validate
+    // call to service, which create poll
+    // redirect to created poll's page
+    public function setPoll(CheckPollRequest $request)
     {
-        dd($request->result);
+        $val = $request->validated();
+        $result = $request->result;
+        $pollService = new PollService();
+        $code = $pollService->StorePoll($val, $result);
+        return redirect()->route('vote', [$code]);
+    }
+
+    public function vote($code)
+    {
+        return $code;
     }
 }

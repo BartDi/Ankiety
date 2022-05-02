@@ -19,8 +19,9 @@ Route::get('/', function () {
 });
 
 Route::controller(VoteController::class)->group(function() {
-    Route::get('/create', 'createPoll');
+    Route::get('/create', 'createPoll')->name('create');
     Route::get('/enter', 'enterCode');
     Route::post('/verify', 'verify');
     Route::post('/set/poll', 'setPoll');
+    Route::get('vote/{code}', 'vote')->name('vote');
 });

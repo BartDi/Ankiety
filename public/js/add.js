@@ -4,28 +4,32 @@ $(document).on('click','.add',function(e){
     if(i==21){
         but.after('<p style="color:red;">Zaloguj się aby móc dodać więcej pól</p>');
     }else if(i<21){
-        but.before('<input type="text" class="option" name="options[]" placeholder="Opcja '+i+'">');
+        but.before('<div class="inputDiv"><input type="text" class="option" name="options[]" placeholder="Opcja '+i+'"><i class="fa-solid fa-trash-can text-danger bin" style="padding-left:5px;"></i></div>');
         // $('.option')[0].remove();
     }
     i += 1;
 });
-var ileWierszy = 2; 
-$(document).on('click', '.add2', function(e){
+$(document).on('click', '.add2', function(){
     var number = $('.numberAdd').val();
     var but = $('.addDiv');
     if(number != ""){
         for(var j = 1; j <= number; j++){
-            ileWierszy += 1;
-            if(ileWierszy<21){
-                but.before('<input type="text" class="option" name="options[]" placeholder="Opcja '+ileWierszy+'">');
+            if(i<21){
+                but.before('<div class="inputDiv"><input type="text" class="option" name="options[]" placeholder="Opcja '+i+'"><i class="fa-solid fa-trash-can text-danger bin" style="padding-left:5px;"></i></div>');
             }
-            else if(ileWierszy == 21){
+            else if(i == 21){
                 but.after('<p style="color:red;">Zaloguj się aby móc dodać więcej pól</p>');
             }
+            i += 1;
         }
     }
-    if(number == ""){
-        console.log('wpisz');
-    }
 
+});
+
+$(document).on('click', '.bin', function(e){
+    var div = $(this).parent();
+    if(div.hasClass("inputDiv")){
+        div.remove();
+        i -= 1;
+    }
 });

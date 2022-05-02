@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('polls', function (Blueprint $table) {
-            $table->id();
-            $table->ipAddress('visitor');
-            $table->string('code', 5)->unique();
-            $table->timestamps();
+        Schema::table('polls', function (Blueprint $table) {
+            $table->string('code', 4);
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('polls');
+        Schema::table('polls', function (Blueprint $table) {
+            $table->dropColumn('code');
+        });
     }
 };

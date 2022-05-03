@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Option;
 
 class Poll extends Model
 {
@@ -15,4 +16,9 @@ class Poll extends Model
         'minutes',
         'code'
     ];
+
+    public function options()
+    {
+        return $this->hasMany(Option::class, 'pollId')->select(['id','option','pollId']);
+    }
 }

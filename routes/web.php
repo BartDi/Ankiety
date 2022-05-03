@@ -20,8 +20,10 @@ Route::get('/', function () {
 
 Route::controller(VoteController::class)->group(function() {
     Route::get('/create', 'createPoll')->name('create');
-    Route::get('/enter', 'enterCode');
+    Route::get('/enter', 'enterCode')->name('enter');
     Route::post('/verify', 'verify');
     Route::post('/set/poll', 'setPoll');
     Route::get('vote/{code}', 'vote')->name('vote');
+    Route::post('add/vote', 'putVote');
+    Route::get('results/{code}', 'results')->name('result');
 });

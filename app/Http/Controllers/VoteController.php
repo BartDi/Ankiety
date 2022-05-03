@@ -66,10 +66,6 @@ class VoteController extends Controller
     public function results($code)
     {
         $result = $this->pollService->GetResults($code);
-        $total = 0;
-        foreach($result as $r){
-            $total += (int)$r->votes;
-        }
-        return view('result', ['results'=>$result, 'total' => $total]);
+        return view('result', ['results'=>$result, 'code'=>$code]);
     }
 }

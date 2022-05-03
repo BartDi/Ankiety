@@ -28,4 +28,7 @@
         <input class="btn btn-primary vote" type="submit" value="Potwierdź">
     </div>
 </form>
+<div class="container">
+    <h1>Kod ankiety {{$poll->code}}</h1>
+</div>
 @endsection

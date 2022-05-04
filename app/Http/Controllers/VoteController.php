@@ -62,12 +62,15 @@ class VoteController extends Controller
     {
         $val = $request->validated();
         $this->pollService->handleVoterInfo($request);
-        return redirect()->route('result', ['code'=>$request['code']]);
+        return redirect()->route('result', ['code'=>$request['code'], 'voted' => true]);
     }
 
-    public function results($code)
+    public function results($code, $voted = false)
     {
         $result = $this->pollService->GetResults($code);
+        if ($voted == 1) {
+            return view('result', ['results'=>$result, 'code'=>$code, 'success'=>'Dziękujemy za oddany głos']);    
+        }
         return view('result', ['results'=>$result, 'code'=>$code]);
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoteController;
+use App\Http\Middleware\CheckUserAccess;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,6 @@ Route::controller(VoteController::class)->group(function() {
     Route::post('/verify', 'verify');
     Route::post('/set/poll', 'setPoll');
     Route::get('vote/{code}', 'vote')->name('vote');
-    Route::post('add/vote', 'putVote');
-    Route::get('results/{code}', 'results')->name('result');
+    Route::post('add/vote', 'putVote')->middleware('access');
+    Route::get('results/{code}/{voted?}', 'results')->name('result');
 });

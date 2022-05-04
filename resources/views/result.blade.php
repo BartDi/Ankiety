@@ -2,6 +2,16 @@
 
 @section('title', 'Wyniki')
 @section('content')
+@if(Session::has('voted'))
+<div class="alert alert-warning text-center">
+    <h5>{{Session::get('voted')}}</h5>
+</div> 
+@endif
+@if($success ?? null)
+<div class="alert alert-success text-center">
+    <h5>{{$success}}</h5>
+</div> 
+@endif
     <div class="container">
         <div>
             <h2>

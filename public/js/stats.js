@@ -11,6 +11,6 @@ $('.votes').each(function() {
 $(arrVal).each(function (index){
     var procent = arrVal[index]/total * 100;
     if(procent>0){
-        $(div).append('<div title="'+arrVal[index]+'" style="width:' + procent + '%; background-color:black;color:white;height:40px;margin-bottom:10px;">'+procent+'% |'+text[index]+'</div>')
+        $(div).append('<div title="'+arrVal[index]+'" style="width:' + procent + '%; background-color:black;color:white;height:40px;margin-bottom:10px;">'+Math.round(procent)+'% |'+text[index]+'</div>')
     }
 });

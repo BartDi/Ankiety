@@ -22,9 +22,15 @@
     <!-- Header -->
     <nav class="bg-primary" style="height:100px;">
         <div style="margin-left:5%;">
-            <a href='{{ url("/") }}'>
+            <a href='{{ url("/") }}' style="float:left">
                 <i class="fa-solid fa-square-poll-vertical fa-6x text-secondary"></i>
             </a>
+            <div class="float-start" style="margin-top:35px;margin-left:5%;">
+            <a href="{{ route('create') }}" class="text-decoration-none text-secondary"><h3>Stwórz ankiete</h3></a>
+            </div>
+            <div class="float-start text-secondary" style="margin-top:35px;margin-left:5%;">
+                <a href="{{ route('enter') }}" class="text-decoration-none text-secondary"><h3>Wpisz kod</h3></a>
+            </div>
         </div>
     </nav>
 

@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use App\Http\Requests\CheckPollRequest;
 use App\Models\Poll;
 use App\Models\Option;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class PollService
 {
@@ -46,6 +46,18 @@ class PollService
             ->select('polls.question', 'options.votes', 'options.option')
             ->get();
         return $results;
+    }
+
+    public function handleVoterInfo($request)
+    {
+        $option = DB::table('options')
+        ->where('id', $request['votes'])
+        ->increment('votes');
+
+        DB::table('ipadresses')->insert([
+            'pollId' => $request->pollId,
+            'voter' => $request->getClientIp()
+        ]);
     }
 
 }

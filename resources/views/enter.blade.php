@@ -22,6 +22,11 @@
 
 </style>
 @section('content')
+@if(Session::has('message'))
+<div class="alert alert-warning text-center">
+    <h5>{{Session::get('message')}}</h5>
+</div> 
+@endif
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>

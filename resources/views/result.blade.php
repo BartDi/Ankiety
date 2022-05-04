@@ -29,6 +29,6 @@
     
 <div class="container">
 <h1>Kod ankiety: {{$code}}</h1>
-<a href='{{url("vote/{$code}")}}'><h3>Zagłosuj</h3></a>
+<a href='{{url("vote/{$code}")}}'><h3>Jeszcze nie zagłosowałeś/aś? Zagłosuj</h3></a>
 </div>
 @endsection

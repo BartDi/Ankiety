@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CheckPollRequest;
 use App\Http\Requests\VerifyCodeRequest;
+use App\Http\Requests\VoteRequest;
 use App\Services\PollService;
 use App\Models\Poll;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class VoteController extends Controller
@@ -30,9 +32,7 @@ class VoteController extends Controller
     public function verify(VerifyCodeRequest $request)
     {
         $val = $request->validated();
-        $poll = Poll::where('code', $val['code'])->firstOrFail();
-        $options = $poll->options;
-        return view('poll', ['poll' => $poll, 'options' => $options]);
+        return redirect()->route('vote', ['code'=>$val['code']]);
     }
 
     // Request validate
@@ -48,18 +48,20 @@ class VoteController extends Controller
 
     public function vote($code)
     {
-        $poll = Poll::where('code', $code)->firstOrFail();
+        try {
+            $poll = Poll::where('code', $code)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            return redirect()->back()->with('message', 'Twój kod nie pasuje do żadnej ankiety');
+        }
         $options = $poll->options;
         return view('poll', ['poll' => $poll, 'options' => $options]);
         
     }
 
-    public function putVote(Request $request)
+    public function putVote(VoteRequest $request)
     {
-        $option = DB::table('options')
-            ->where('id', $request['votes'])
-            ->increment('votes');
-
+        $val = $request->validated();
+        $this->pollService->handleVoterInfo($request);
         return redirect()->route('result', ['code'=>$request['code']]);
     }
 

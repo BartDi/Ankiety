@@ -17,6 +17,7 @@ class CheckUserAccess
      */
     public function handle(Request $request, Closure $next)
     {
+        // if user has already voted, the middleware return him to the result's page with message 
         if(DB::table('ipadresses')->where('pollId', $request->pollId)->where('voter', $request->ip())->exists()){
             return redirect()->route('result', ['code'=>$request->code])->with('voted', 'Już raz zagłosowałeś');
         }

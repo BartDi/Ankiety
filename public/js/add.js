@@ -1,4 +1,6 @@
+// i - amount of options, default value of options is 2 so next is 3
 var i = 3;
+// function which add option once
 $(document).on('click','.add',function(e){
     var but = $('.addDiv');
     if(i==21){
@@ -9,6 +11,7 @@ $(document).on('click','.add',function(e){
     }
     i += 1;
 });
+// function which add the amount of options
 $(document).on('click', '.add2', function(){
     var number = $('.numberAdd').val();
     var but = $('.addDiv');
@@ -25,7 +28,7 @@ $(document).on('click', '.add2', function(){
     }
 
 });
-
+// function to remove option after click the bin icon
 $(document).on('click', '.bin', function(e){
     var div = $(this).parent();
     if(div.hasClass("inputDiv")){

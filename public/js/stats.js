@@ -1,6 +1,10 @@
+// arrVal - takes amount of the option's votes
 var arrVal = [];
+// text - text of each option 
 var text = [];
+// div to display statistics
 var div = $('.card');
+// total amount od votes
 var total = 0;
 $('.votes').each(function() {
     var i = parseInt($(this).text());

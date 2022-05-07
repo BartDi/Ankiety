@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 class PollService
 {
 
+    // $result is not done
+    // $random generate random code for poll
+    // poll is created and options are added
+    // function return code
     public function StorePoll($request, $result)
     {
         $random = Str::random(4);
@@ -37,6 +41,7 @@ class PollService
         return $random;
     }
 
+    // function return poll properties 
     public function GetResults($code)
     {
         //INNER JOIN METHOD
@@ -48,6 +53,8 @@ class PollService
         return $results;
     }
 
+    // add vote to DB
+    // add user ip to DB with id of poll he voted for 
     public function handleVoterInfo($request)
     {
         $option = DB::table('options')

@@ -29,6 +29,7 @@ class VoteController extends Controller
         return view('enter');
     }
 
+    // Validating the request which contain code, which user entered
     public function verify(VerifyCodeRequest $request)
     {
         $val = $request->validated();
@@ -46,6 +47,8 @@ class VoteController extends Controller
         return redirect()->route('vote', [$code]);
     }
 
+    // function check if code exists if not return back with message
+    // if code exists function return to the voteing page
     public function vote($code)
     {
         try {
@@ -58,6 +61,8 @@ class VoteController extends Controller
         
     }
 
+    // function which call function in service
+    // in service vote is added and the user ip is saved
     public function putVote(VoteRequest $request)
     {
         $val = $request->validated();
@@ -65,6 +70,8 @@ class VoteController extends Controller
         return redirect()->route('result', ['code'=>$request['code'], 'voted' => true]);
     }
 
+    // call to service to get results
+    // voted is optional, if voter voted first time he will receive the message
     public function results($code, $voted = false)
     {
         $result = $this->pollService->GetResults($code);

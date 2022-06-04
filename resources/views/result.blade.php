@@ -12,6 +12,11 @@
     <h5>{{$success}}</h5>
 </div> 
 @endif
+@if(Session::has('message'))
+<div class="alert alert-warning text-center">
+    <h5>{{Session::get('message')}}</h5>
+</div> 
+@endif
     <div class="container">
         <div>
             <h2>

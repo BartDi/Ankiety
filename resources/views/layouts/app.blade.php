@@ -15,7 +15,11 @@
     <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <title>@yield('title', env('APP_NAME'))</title>
-
+    <style>
+        .navLi:hover{
+            border-bottom: 4px solid;
+        }
+    </style>
   </head>
 <body style="background-color:#F2F0EB;">
 
@@ -25,10 +29,10 @@
             <a href='{{ url("/") }}' style="float:left">
                 <i class="fa-solid fa-square-poll-vertical fa-6x text-secondary"></i>
             </a>
-            <div class="float-start" style="margin-top:35px;margin-left:5%;">
+            <div class="float-start text-secondary navLi" style="margin-top:35px;margin-left:5%;">
             <a href="{{ route('create') }}" class="text-decoration-none text-secondary"><h3>Stwórz ankiete</h3></a>
             </div>
-            <div class="float-start text-secondary" style="margin-top:35px;margin-left:5%;">
+            <div class="float-start text-secondary navLi" style="margin-top:35px;margin-left:5%;">
                 <a href="{{ route('enter') }}" class="text-decoration-none text-secondary"><h3>Wpisz kod</h3></a>
             </div>
         </div>

@@ -10,6 +10,7 @@ use App\Services\PollService;
 use App\Models\Poll;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Carbon\Carbon;
 
 
 class VoteController extends Controller
@@ -56,8 +57,15 @@ class VoteController extends Controller
         } catch (ModelNotFoundException $e) {
             return redirect()->back()->with('message', 'Twój kod nie pasuje do żadnej ankiety');
         }
+        if($poll->minutes){
+            $presentTime = Carbon::now()->subMinute($poll->minutes);
+            if($poll->created_at < $presentTime){
+                return redirect()->route('result',['code'=>$poll->code])->with('message', 'Czas na głosowanie skończył się');
+            }
+        }
         $options = $poll->options;
         return view('poll', ['poll' => $poll, 'options' => $options]);
+        
         
     }
 

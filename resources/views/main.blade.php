@@ -11,9 +11,9 @@
     </div>
     <div style="width:50%;margin:auto;height:200px;">
     <a href='{{ url("/enter") }}'>
-        <button class="rounded border-4 text-decoration-none text-primary border-success w-100 h-50">
+        <button class="rounded border-4 text-decoration-none text-info border-success w-100 h-50">
             <h3 class="d-inline" style="padding-right:20px;">WPISZ KOD I ZAGŁOSUJ</h3>
-            <i class="fa-solid fa-keyboard fa-2x text-primary d-inline"></i>
+            <i class="fa-solid fa-keyboard fa-2x text-info d-inline"></i>
         </button>
     </a>
     </div>

@@ -47,13 +47,13 @@
             <input type="text" class="option" name="options[]" placeholder="Opcja 2">
         </div>
         <div class="addDiv">
-            <button type="button" class="add b">Dodaj opcję</button>
+            <button type="button" class="add b btn-primary">Dodaj opcję</button>
             <input type="number" class="numberAdd" name="toAdd" min='1' placeholder="Ile opcji dodać" min="1">
-            <button type="button" class="add2">Dodaj</button>
+            <button  type="button" class="add2 btn-primary">Dodaj</button>
             <label for="result">Widoczność wyników</label>
             <input type="checkbox" name="result">
             <input type="number" name="time" placeholder="Czas ankiety (min)" min="1">
-            <input type="submit" value="Wyślij" class="b">
+            <input class="btn btn-primary" type="submit" value="Wyślij" class="b">
         </div>
     </form>
 </div>
